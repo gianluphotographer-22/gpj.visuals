@@ -1,0 +1,149 @@
+PORTFOLIO GPJ — PACCHETTO CONTROLLATO
+=====================================
+
+COME CARICARLO (il passaggio che finora e' andato storto)
+  1. estrai lo ZIP: ti ritrovi index.html, projects/, images/, assets/
+  2. NON caricare il file .zip su GitHub: va caricato il CONTENUTO
+  3. su github.com apri il repository portfolio-gpj
+  4. Add file > Upload files
+  5. seleziona TUTTO quello che c'e' dentro la cartella estratta e
+     trascinalo nella finestra del browser in un colpo solo.
+     Trascina le CARTELLE intere, non i file uno per uno: e' cosi'
+     che images/reviews e images/cuore-biancorosso non arrivavano mai.
+  6. Commit changes, aspetta 1-2 minuti, ricarica con CTRL+F5
+
+CONTROLLO AUTOMATICO — USALO SUBITO DOPO
+  Ho aggiunto una pagina che verifica da sola tutti i 120 file:
+  https://gianluphotographer-22.github.io/portfolio-gpj/diagnostica.html
+  Ti elenca ogni immagine con scritto TROVATO o MANCANTE, pagina per
+  pagina. Se e' tutto verde hai finito. Se qualcosa e' rosso, sai
+  esattamente quale file ricaricare.
+  Quando hai finito puoi cancellare diagnostica.html.
+
+IL LOGO NELL'OCCHIELLO — RISOLTO
+  Il file GPJ_neg.png era completamente bianco: 812x812 pixel tutti
+  uguali, nessun disegno dentro. Per questo l'occhiello restava vuoto.
+  Il logo vero era solo dentro GPJ_pos.png, ma con il fondo bianco
+  pieno, che sul cerchio rosso dell'header sarebbe apparso come un
+  quadrato bianco.
+  Ho ritagliato l'occhio dal fondo e creato tre file nuovi:
+    images/gpj-mark.png      occhio bianco, fondo trasparente
+                             -> e' quello dentro il cerchio rosso
+    images/gpj-mark-red.png  occhio rosso, fondo trasparente
+                             -> scorta per fondi chiari, non usato
+    images/favicon.png       cerchio rosso con l'occhio bianco
+                             -> icona della scheda del browser
+  Ho anche tolto il lazy load dal logo: e' sempre a schermo, non ha
+  senso caricarlo in ritardo.
+
+ALTRE CORREZIONI DI QUESTO GIRO
+  - recensioni: creata images/reviews, mancava del tutto.
+    persona-01 Abrescia / -02 Gelsi / -03 Scienza / -04 Marcone.
+    Marcone mostrava la faccia di Abrescia: corretto.
+  - tolte 3 caselle che ripetevano lo stesso scatto
+    (matchday-stories 7, athlete-portraits 9, live-atmosphere 4)
+  - intensity e human-detail avevano 4 caselle e 2 sole grafiche
+    alternate: ora ogni casella ha il suo segnaposto distinto
+  - creata projects/drone-works.html: la homepage la linkava ma
+    non esisteva, usciva un 404
+  - tolti i nomi file con lo spazio dentro
+  - tolte 6 sezioni video che puntavano a demo-showreel.mp4,
+    un file mai esistito: si vedeva un player nero
+
+I TUOI DUE VIDEO
+  Restano collegati e intatti:
+    athlete-portraits -> videos/GELSI.MP4
+    matchday-stories  -> videos/BOVIO.MP4
+  La cartella videos non e' nel mio pacchetto perche' non me l'hai
+  mandata. Se e' gia' online resta dov'e': caricando questi file non
+  cancelli quelli che non tocchi. La diagnostica te lo conferma.
+
+CORRETTO — COPERTINA MATRIMONIO DONNARUMMA
+  Non era un problema di foto sbagliata: la pagina cercava ancora
+  ../images/athlete-portraits-cover.jpg, l'immagine del vecchio progetto
+  Kings League da cui e' stata clonata. Lo script di generazione aveva
+  fallito in silenzio la sostituzione (il tag <img> del modello era
+  cambiato da .svg a .jpg dopo l'ottimizzazione, e la stringa cercata
+  non corrispondeva piu'). Ora la pagina punta alla foto giusta:
+  images/matrimonio-donnarumma/matrimonio-donnarumma-cover.jpg
+
+CORRETTO — SEZIONE "CHI SONO"
+  images/about.jpg era ancora il segnaposto rosso su fondo panna.
+  L'ho sostituita con una foto vera gia' presente nel sito: il
+  fotografo con la fotocamera all'occhio, ricavata dalla stessa foto
+  usata come sfondo dell'hero della homepage (hero.jpg). Ho tolto la
+  barra rossa decorativa che era incollata nel file originale e
+  schiarito l'esposizione, perche' la sezione About ha sfondo bianco.
+
+NUOVA SEZIONE — 7 SINS (al posto di Human Detail, mai riempita)
+  Human Detail era rimasta segnaposto dall'inizio: quattro grafiche
+  grigie, mai una foto vera. L'ho sostituita — stesso indirizzo
+  projects/human-detail.html, quindi i link da intensity.html e
+  drone-works.html continuano a funzionare da soli — con il reportage
+  sulla squadra social 7 Sins: 17 foto vere, categoria "Content".
+  Se preferisci un indirizzo con il nome giusto (projects/7-sins.html)
+  dimmelo e te lo cambio.
+  crea-7-sins.py rigenera la pagina se vuoi editare intro o didascalie.
+
+NUOVA PAGINA — numeri.html ("In numeri")
+  Costruita sui dati veri che mi hai mandato (4 screenshot Insight,
+  16 settembre 2026). Contiene:
+  - i 4 numeri principali degli ultimi 90 giorni (visualizzazioni,
+    account raggiunti, follower netti, visite al profilo)
+  - la ripartizione tra Reel/Storie/Post, sia per visualizzazioni
+    che per interazioni
+  - i 4 contenuti piu' visti, con i titoli e i numeri esatti che
+    ho letto dallo screenshot
+  - una fascia rossa con i follower totali (1.539, +19,2% in 30 giorni)
+    e i contenuti che ne hanno portati di piu'
+  - un rimando a "Oltre la transenna", il progetto che ha generato
+    questi numeri (e viceversa: in fondo a quella pagina ora c'e'
+    un link verso questa)
+  Collegata dal menu di ogni pagina del sito, voce "Numeri".
+  crea-numeri.py rigenera la pagina: per aggiornarla con un nuovo
+  screenshot Insight, basta cambiare i valori in cima allo script.
+
+  UNA CIFRA NON L'HO USATA: nel primo screenshot "Interazioni" e'
+  tagliato dal bordo dello schermo e si legge solo "52,3...". Non
+  l'ho messa nella pagina per non inventare l'ultima cifra: se vuoi
+  che compaia, mandami uno screenshot con quel numero intero.
+
+PAGINA INSTAGRAM — COMPLETATA CON I TUOI DATI
+  Non sono riuscito a costruirla: Instagram blocca la lettura
+  automatica dei profili (bio, follower, numero post, griglia foto),
+  e la ricerca web non restituisce questi dati per un account piccolo
+  come @gpj.visuals. Per farla mi servono da te, incollati in chat:
+  - il testo della bio che vuoi mostrare
+  - i numeri che vuoi mettere in evidenza (follower, post, ecc.), se li vuoi
+  - quali foto del profilo vuoi in evidenza (posso usare foto gia' nel
+    sito, o me le carichi tu)
+  Appena me li mandi la costruisco nello stesso giro.
+
+
+  projects/matrimonio-donnarumma.html
+  images/matrimonio-donnarumma/   (10 foto + copertina)
+  Il servizio da paparazzo al matrimonio Donnarumma-Elefante.
+  Sotto la galleria c'e' un blocco "Come e' stata fatta" in quattro
+  punti sul metodo di lavoro dietro la transenna, piu' una chiusura.
+  Quei testi li ho scritti io leggendo le foto: correggili con quello
+  che e' successo davvero. Si modificano dalla lista METODO in cima a
+  crea-matrimonio-donnarumma.py, senza toccare l'HTML.
+  In homepage ho aggiunto il filtro "Eventi", che per ora seleziona
+  solo questo progetto.
+
+  DA VALUTARE: in 3 delle 10 foto compaiono dei minori. Non sono un
+  avvocato, ma l'immagine dei minori in Italia ha tutele piu' forti
+  di quella degli adulti anche quando lo scatto e' legittimo.
+  Sono le foto numero 2, 5 e 8. Per toglierle: cancella i file,
+  rinumera i restanti e abbassa N_FOTO nello script.
+
+CUORE BIANCOROSSO — ORA COMPLETO
+  01  Bari - Cavese     la prima in casa   18 foto vere
+  02  Altamura - Bari   derby di Puglia    30 foto vere
+  Nessun segnaposto rimasto in questa sezione.
+
+SEGNAPOSTO DA SOSTITUIRE
+  images/intensity-*.svg     images/human-detail-*.svg
+  images/match-film-*.svg    images/visual-campaign-*.svg
+  images/drone-*.svg
+  Ognuno ha scritto sopra il nome del file da usare.

@@ -1,149 +1,151 @@
-PORTFOLIO GPJ — PACCHETTO CONTROLLATO
+PORTFOLIO GPJ — AGGIORNAMENTO GRANDE
 =====================================
 
-COME CARICARLO (il passaggio che finora e' andato storto)
-  1. estrai lo ZIP: ti ritrovi index.html, projects/, images/, assets/
-  2. NON caricare il file .zip su GitHub: va caricato il CONTENUTO
-  3. su github.com apri il repository portfolio-gpj
-  4. Add file > Upload files
-  5. seleziona TUTTO quello che c'e' dentro la cartella estratta e
-     trascinalo nella finestra del browser in un colpo solo.
-     Trascina le CARTELLE intere, non i file uno per uno: e' cosi'
-     che images/reviews e images/cuore-biancorosso non arrivavano mai.
-  6. Commit changes, aspetta 1-2 minuti, ricarica con CTRL+F5
+Estrai lo ZIP e apri index.html: funziona subito in locale.
+Per GitHub: carica tutto il contenuto nella radice del repository.
 
-CONTROLLO AUTOMATICO — USALO SUBITO DOPO
-  Ho aggiunto una pagina che verifica da sola tutti i 120 file:
-  https://gianluphotographer-22.github.io/portfolio-gpj/diagnostica.html
-  Ti elenca ogni immagine con scritto TROVATO o MANCANTE, pagina per
-  pagina. Se e' tutto verde hai finito. Se qualcosa e' rosso, sai
-  esattamente quale file ricaricare.
-  Quando hai finito puoi cancellare diagnostica.html.
+COSA HO FATTO IN QUESTO GIRO
+-----------------------------
 
-IL LOGO NELL'OCCHIELLO — RISOLTO
-  Il file GPJ_neg.png era completamente bianco: 812x812 pixel tutti
-  uguali, nessun disegno dentro. Per questo l'occhiello restava vuoto.
-  Il logo vero era solo dentro GPJ_pos.png, ma con il fondo bianco
-  pieno, che sul cerchio rosso dell'header sarebbe apparso come un
-  quadrato bianco.
-  Ho ritagliato l'occhio dal fondo e creato tre file nuovi:
-    images/gpj-mark.png      occhio bianco, fondo trasparente
-                             -> e' quello dentro il cerchio rosso
-    images/gpj-mark-red.png  occhio rosso, fondo trasparente
-                             -> scorta per fondi chiari, non usato
-    images/favicon.png       cerchio rosso con l'occhio bianco
-                             -> icona della scheda del browser
-  Ho anche tolto il lazy load dal logo: e' sempre a schermo, non ha
-  senso caricarlo in ritardo.
+1. TOLTE LE 4 SEZIONI VUOTE
+   Intensity, Match Film, Visual Campaign e Drone Works non sono mai
+   state riempite di foto vere: erano solo segnaposto grigi. Le ho
+   tolte del tutto — card in homepage, filtri "Ritratti" e "Drone
+   Works" (rimasti senza nessun progetto), file delle pagine, immagini
+   segnaposto. La "catena" dei progetti (il link "progetto successivo"
+   in fondo a ogni pagina) e' stata ricucita cosi' non punta piu' a
+   pagine che non esistono: Win or Go Home ora porta a 7 Sins.
+   Restano 6 progetti, tutti con foto vere: Kings League, Cuore
+   Biancorosso, 7 Sins, Win or Go Home, T'Immagini, Oltre la transenna.
 
-ALTRE CORREZIONI DI QUESTO GIRO
-  - recensioni: creata images/reviews, mancava del tutto.
-    persona-01 Abrescia / -02 Gelsi / -03 Scienza / -04 Marcone.
-    Marcone mostrava la faccia di Abrescia: corretto.
-  - tolte 3 caselle che ripetevano lo stesso scatto
-    (matchday-stories 7, athlete-portraits 9, live-atmosphere 4)
-  - intensity e human-detail avevano 4 caselle e 2 sole grafiche
-    alternate: ora ogni casella ha il suo segnaposto distinto
-  - creata projects/drone-works.html: la homepage la linkava ma
-    non esisteva, usciva un 404
-  - tolti i nomi file con lo spazio dentro
-  - tolte 6 sezioni video che puntavano a demo-showreel.mp4,
-    un file mai esistito: si vedeva un player nero
+   PER RIEMPIRLE DI NUOVO IN FUTURO: quando avrai le foto per uno di
+   questi temi, basta ripartire dal metodo che abbiamo usato per tutti
+   gli altri progetti (un file crea-nome-progetto.py sul modello di
+   crea-7-sins.py o crea-matrimonio-donnarumma.py, che trovi ancora
+   nella cartella). Dimmelo quando hai le foto e te lo preparo.
 
-I TUOI DUE VIDEO
-  Restano collegati e intatti:
-    athlete-portraits -> videos/GELSI.MP4
-    matchday-stories  -> videos/BOVIO.MP4
-  La cartella videos non e' nel mio pacchetto perche' non me l'hai
-  mandata. Se e' gia' online resta dov'e': caricando questi file non
-  cancelli quelli che non tocchi. La diagnostica te lo conferma.
+2. FORM DI CONTATTO VERO, AL POSTO DEL SOLO MAILTO
+   Ora sotto "Facciamolo vedere" c'e' un form vero (nome, email,
+   messaggio) che invia tramite Web3Forms — nessun server richiesto,
+   funziona anche su GitHub Pages. Il mailto resta come alternativa,
+   piu' piccolo, sotto il form.
 
-CORRETTO — COPERTINA MATRIMONIO DONNARUMMA
-  Non era un problema di foto sbagliata: la pagina cercava ancora
-  ../images/athlete-portraits-cover.jpg, l'immagine del vecchio progetto
-  Kings League da cui e' stata clonata. Lo script di generazione aveva
-  fallito in silenzio la sostituzione (il tag <img> del modello era
-  cambiato da .svg a .jpg dopo l'ottimizzazione, e la stringa cercata
-  non corrispondeva piu'). Ora la pagina punta alla foto giusta:
-  images/matrimonio-donnarumma/matrimonio-donnarumma-cover.jpg
+   AZIONE RICHIESTA DA TE, IL FORM NON FUNZIONA SENZA:
+   a. vai su https://web3forms.com
+   b. inserisci la tua email, ricevi una "Access Key" gratuita
+      (nessun account da creare, solo conferma via email)
+   c. apri index.html, cerca la scritta
+      INSERISCI_QUI_LA_TUA_ACCESS_KEY
+      e sostituiscila con la chiave che ti hanno mandato
+   d. ricarica il sito online
+   Finche' non lo fai il form mostra un avviso invece di inviare, non
+   si rompe e non manda niente a vuoto.
 
-CORRETTO — SEZIONE "CHI SONO"
-  images/about.jpg era ancora il segnaposto rosso su fondo panna.
-  L'ho sostituita con una foto vera gia' presente nel sito: il
-  fotografo con la fotocamera all'occhio, ricavata dalla stessa foto
-  usata come sfondo dell'hero della homepage (hero.jpg). Ho tolto la
-  barra rossa decorativa che era incollata nel file originale e
-  schiarito l'esposizione, perche' la sezione About ha sfondo bianco.
+3. TAG OPEN GRAPH SU TUTTE LE PAGINE
+   Quando condividi un link del sito su Instagram, WhatsApp o
+   Twitter/X, ora compare un'anteprima con titolo, descrizione e foto
+   di copertina, invece del link nudo. Vale per tutte le 8 pagine.
 
-NUOVA SEZIONE — 7 SINS (al posto di Human Detail, mai riempita)
-  Human Detail era rimasta segnaposto dall'inizio: quattro grafiche
-  grigie, mai una foto vera. L'ho sostituita — stesso indirizzo
-  projects/human-detail.html, quindi i link da intensity.html e
-  drone-works.html continuano a funzionare da soli — con il reportage
-  sulla squadra social 7 Sins: 17 foto vere, categoria "Content".
-  Se preferisci un indirizzo con il nome giusto (projects/7-sins.html)
-  dimmelo e te lo cambio.
-  crea-7-sins.py rigenera la pagina se vuoi editare intro o didascalie.
+4. sitemap.xml E robots.txt
+   Aiutano Google a trovare e capire le pagine del sito. Sono nella
+   radice, si aggiornano da soli quando aggiungi pagine (vedi sotto).
 
-NUOVA PAGINA — numeri.html ("In numeri")
-  Costruita sui dati veri che mi hai mandato (4 screenshot Insight,
-  16 settembre 2026). Contiene:
-  - i 4 numeri principali degli ultimi 90 giorni (visualizzazioni,
-    account raggiunti, follower netti, visite al profilo)
-  - la ripartizione tra Reel/Storie/Post, sia per visualizzazioni
-    che per interazioni
-  - i 4 contenuti piu' visti, con i titoli e i numeri esatti che
-    ho letto dallo screenshot
-  - una fascia rossa con i follower totali (1.539, +19,2% in 30 giorni)
-    e i contenuti che ne hanno portati di piu'
-  - un rimando a "Oltre la transenna", il progetto che ha generato
-    questi numeri (e viceversa: in fondo a quella pagina ora c'e'
-    un link verso questa)
-  Collegata dal menu di ogni pagina del sito, voce "Numeri".
-  crea-numeri.py rigenera la pagina: per aggiornarla con un nuovo
-  screenshot Insight, basta cambiare i valori in cima allo script.
+5. ANALYTICS SUL SITO (non solo su Instagram)
+   Aggiunto GoatCounter: gratuito, senza cookie, non richiede il
+   banner di consenso che servirebbe con Google Analytics. Conta
+   visite, pagine piu' viste, da dove arriva la gente.
 
-  UNA CIFRA NON L'HO USATA: nel primo screenshot "Interazioni" e'
-  tagliato dal bordo dello schermo e si legge solo "52,3...". Non
-  l'ho messa nella pagina per non inventare l'ultima cifra: se vuoi
-  che compaia, mandami uno screenshot con quel numero intero.
+   AZIONE RICHIESTA DA TE, ANCHE QUESTA NON FUNZIONA SENZA:
+   a. vai su https://www.goatcounter.com e crea un sito gratuito
+      (serve solo un'email, nessuna carta)
+   b. ti daranno un indirizzo tipo TUOSITO.goatcounter.com
+   c. in OGNI file .html del sito (sono 8), cerca
+      TUOCODICE.goatcounter.com
+      e sostituisci "TUOCODICE" con il tuo vero indirizzo
+   Un trova-e-sostituisci in un editor di codice (VS Code, Sublime,
+   anche TextEdit in modalita' testo semplice) lo fa su tutti i file
+   in un colpo solo.
 
-PAGINA INSTAGRAM — COMPLETATA CON I TUOI DATI
-  Non sono riuscito a costruirla: Instagram blocca la lettura
-  automatica dei profili (bio, follower, numero post, griglia foto),
-  e la ricerca web non restituisce questi dati per un account piccolo
-  come @gpj.visuals. Per farla mi servono da te, incollati in chat:
-  - il testo della bio che vuoi mostrare
-  - i numeri che vuoi mettere in evidenza (follower, post, ecc.), se li vuoi
-  - quali foto del profilo vuoi in evidenza (posso usare foto gia' nel
-    sito, o me le carichi tu)
-  Appena me li mandi la costruisco nello stesso giro.
+6. PUBBLICAZIONE AUTOMATICA + CONTROLLO PRIMA DI ANDARE ONLINE
+   Aggiunta una GitHub Action (file .github/workflows/deploy.yml) che
+   ogni volta che carichi qualcosa sul ramo principale del repository:
+   a. controlla che ogni immagine, pagina e file collegato esista
+      davvero (lo stesso controllo che fa diagnostica.html, ma
+      automatico, prima che il sito vada online)
+   b. se manca qualcosa di importante, FERMA la pubblicazione invece
+      di mettere online una pagina rotta (i video mancanti fanno
+      eccezione: restano un avviso, non bloccano nulla, perche' il
+      resto del sito funziona comunque senza)
+   c. se e' tutto a posto, pubblica automaticamente
 
+   AZIONE RICHIESTA DA TE, UNA VOLTA SOLA:
+   Su GitHub, nel repository: Settings > Pages > Build and deployment
+   > Source, cambia da "Deploy from a branch" a "GitHub Actions".
+   Da quel momento carichi i file (anche solo con "Upload files" come
+   hai sempre fatto) e il sito si aggiorna da solo, con il controllo
+   automatico di sicurezza incluso.
 
-  projects/matrimonio-donnarumma.html
-  images/matrimonio-donnarumma/   (10 foto + copertina)
-  Il servizio da paparazzo al matrimonio Donnarumma-Elefante.
-  Sotto la galleria c'e' un blocco "Come e' stata fatta" in quattro
-  punti sul metodo di lavoro dietro la transenna, piu' una chiusura.
-  Quei testi li ho scritti io leggendo le foto: correggili con quello
-  che e' successo davvero. Si modificano dalla lista METODO in cima a
-  crea-matrimonio-donnarumma.py, senza toccare l'HTML.
-  In homepage ho aggiunto il filtro "Eventi", che per ora seleziona
-  solo questo progetto.
+7. NUOVA PAGINA recensioni.html — RECENSIONI GENERALI
+   La homepage resta com'era: le testimonianze di chi collabora con te
+   in modo continuativo (Abrescia, Gelsi, Scienza, Marcone). In fondo a
+   quella sezione ora c'e' un pulsante "Leggi tutte le recensioni",
+   che porta alla pagina nuova.
 
-  DA VALUTARE: in 3 delle 10 foto compaiono dei minori. Non sono un
-  avvocato, ma l'immagine dei minori in Italia ha tutele piu' forti
-  di quella degli adulti anche quando lo scatto e' legittimo.
-  Sono le foto numero 2, 5 e 8. Per toglierle: cancella i file,
-  rinumera i restanti e abbassa N_FOTO nello script.
+   recensioni.html ha due parti:
+   a. una griglia di "recensioni generali" — per ora vuota, con un
+      messaggio "sii il primo a lasciarne una"
+   b. un modulo per lasciarne una nuova (nome, ruolo facoltativo,
+      email, voto da 1 a 5, testo) — usa la stessa access key di
+      Web3Forms del form contatti, quindi appena la imposti in
+      index.html funzionano ENTRAMBI i form insieme.
 
-CUORE BIANCOROSSO — ORA COMPLETO
-  01  Bari - Cavese     la prima in casa   18 foto vere
-  02  Altamura - Bari   derby di Puglia    30 foto vere
-  Nessun segnaposto rimasto in questa sezione.
+   IMPORTANTE DA CAPIRE: su un sito statico come questo, quando
+   qualcuno compila il modulo, la recensione NON compare da sola sul
+   sito. Ti arriva via email (stessa casella del form contatti). La
+   pubblichi tu, quando vuoi, cosi':
+   a. apri dati/recensioni-generali.json
+   b. aggiungi un blocco con nome, ruolo, testo, voto, anno
+      (un esempio e' scritto dentro il file aggiorna-recensioni.py)
+   c. lancia:  python3 aggiorna-recensioni.py
+   d. carica il nuovo recensioni.html
+   La griglia si aggiorna da sola, sempre nello stesso ordine in cui
+   le aggiungi al file.
 
-SEGNAPOSTO DA SOSTITUIRE
-  images/intensity-*.svg     images/human-detail-*.svg
-  images/match-film-*.svg    images/visual-campaign-*.svg
-  images/drone-*.svg
-  Ognuno ha scritto sopra il nome del file da usare.
+8. VETRINA NUMERI IN HOMEPAGE
+   Prima "In numeri" viveva solo nella sua pagina dedicata, raggiungibile
+   con un click dal menu — facile da non notare. Ora c'e' anche una
+   fascia rossa direttamente in homepage, subito dopo "Chi sono": i
+   4 numeri piu' forti (3.080.297 visualizzazioni, 330.026 account
+   raggiunti, 1.539 follower, 13.485 visite al profilo) messi in bella
+   vista, con un pulsante "Guarda tutti i numeri" che porta alla pagina
+   completa per chi vuole il dettaglio.
+
+   Per aggiornare questi 4 numeri quando avrai un nuovo screenshot
+   Insight, cercali dentro index.html (sezione "NUMERI — vetrina
+   statistiche") e cambiali li': sono scritti in chiaro, senza script
+   da rilanciare per questi quattro soli.
+
+COSA NON HO POTUTO FARE DA SOLO
+--------------------------------
+Sia il form di contatto sia le analytics richiedono una chiave legata
+a una tua email: nessuno puo' generarla al posto tuo, nemmeno io.
+Sono comunque due passaggi di pochi minuti, spiegati sopra.
+
+RESTA DA CARICARE
+------------------
+I due video (GELSI.MP4, BOVIO.MP4): vedi le istruzioni di compressione
+che ti ho dato prima. Una volta pronti vanno semplicemente nella
+cartella videos/ del repository, con questi nomi esatti.
+
+STRUTTURA FINALE
+-----------------
+index.html                       homepage
+numeri.html                      "In numeri" — statistiche Instagram
+sitemap.xml, robots.txt          SEO
+diagnostica.html                 controllo manuale immagini (privata)
+.github/workflows/deploy.yml     pubblicazione + controllo automatico
+scripts/verifica-link.py         lo script usato dal controllo automatico
+projects/                        le 6 pagine progetto
+images/                          tutte le foto
+assets/css, assets/js            stile e comportamento del sito
+crea-*.py, ottimizza-immagini.py, comprimi-video.py   strumenti di lavoro

@@ -115,3 +115,58 @@ window.addEventListener("resize", () => {
     if(menuBtn) menuBtn.setAttribute("aria-expanded","false");
   }
 });
+
+
+/* Form contatti e recensioni — invio via Web3Forms, senza ricaricare la
+   pagina. Richiede una access key gratuita da https://web3forms.com nel
+   campo nascosto "access_key" di ogni form (vedi index.html/recensioni.html).
+   Funziona su qualunque <form class="contact-form">: contatti, recensioni,
+   e ogni altro form con la stessa struttura che aggiungerai in futuro. */
+(function () {
+  var forms = document.querySelectorAll("form.contact-form");
+  if (!forms.length) return;
+
+  forms.forEach(function (form) {
+    var stato = form.querySelector(".contact-form-status");
+    var bottone = form.querySelector("button[type='submit']");
+
+    form.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+
+      var accessKey = form.access_key.value.trim();
+      if (!accessKey || accessKey === "INSERISCI_QUI_LA_TUA_ACCESS_KEY") {
+        stato.textContent = "Form non ancora configurato: manca la access key di Web3Forms.";
+        stato.setAttribute("data-state", "errore");
+        return;
+      }
+
+      bottone.disabled = true;
+      stato.removeAttribute("data-state");
+      stato.textContent = "Invio in corso...";
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+      })
+        .then(function (risposta) { return risposta.json(); })
+        .then(function (dati) {
+          if (dati.success) {
+            stato.textContent = "Inviato, grazie! Ti rispondo appena posso.";
+            stato.setAttribute("data-state", "ok");
+            form.reset();
+          } else {
+            stato.textContent = "Non sono riuscito a inviare. Riprova, o scrivimi via email.";
+            stato.setAttribute("data-state", "errore");
+          }
+        })
+        .catch(function () {
+          stato.textContent = "Connessione assente. Riprova, o scrivimi via email.";
+          stato.setAttribute("data-state", "errore");
+        })
+        .finally(function () {
+          bottone.disabled = false;
+        });
+    });
+  });
+})();
